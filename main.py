@@ -2,14 +2,21 @@ from board import board
 import util
 
 def main():
-    gameBoard = board(4)
-    print(gameBoard.board)
+    inputVal = input("What size board would you like? ")
 
-    for _ in range(100):
-        util.printArray(gameBoard.board)
-        gameBoard.runLifeCycle()
-        if gameBoard.flag == True:
-            break
+    try:
+         size = int(inputVal)
+    except ValueError:
+        print("Thats not an Int!")
+    else:
+        gameBoard = board(int(size))
+        print(gameBoard.board)
+
+        while(1):
+            util.printArray(gameBoard.board)
+            gameBoard.runLifeCycle()
+            if gameBoard.flag == True:
+                break
 
 
 

@@ -4,6 +4,7 @@ class board:
     def __init__(self, size):
         self.board = []
         self.size = size
+        self.flag = False
 
         for i in range(self.size):
             self.board.append([])
@@ -20,6 +21,8 @@ class board:
 
         if newBoard != self.board:
             self.board = newBoard
+        else:
+            self.flag = True
 
     def checkNeighbors(self, i, j):
         liveNeighbors = self.checkNeighborsHelper(i,j)
@@ -38,19 +41,19 @@ class board:
     def checkNeighborsHelper(self, i, j):
         liveNeighbors = 0
 
-        if (i-1) > 0 and (i-1) < (self.size - 1):
+        if (i-1) >= 0 and (i-1) <= (self.size - 1):
             if self.board[i-1][j] == 1:
                 liveNeighbors += 1
 
-        if (i+1) > 0 and (i+1) < (self.size - 1):
+        if (i+1) >= 0 and (i+1) <= (self.size - 1):
             if self.board[i+1][j] == 1:
                 liveNeighbors += 1
 
-        if (j-1) > 0 and (j-1) < (self.size - 1):
+        if (j-1) >= 0 and (j-1) <= (self.size - 1):
             if self.board[i][j-1] == 1:
                 liveNeighbors += 1
 
-        if (j+1) > 0 and (j+1) < (self.size - 1):
+        if (j+1) >= 0 and (j+1) <= (self.size - 1):
             if self.board[i][j+1] == 1:
                 liveNeighbors += 1
 
